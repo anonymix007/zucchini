@@ -11,8 +11,6 @@
 #include <map>
 #include <vector>
 
-#include "base/debug/stack_trace.h"
-#include "base/logging.h"
 #include "base/numerics/checked_math.h"
 #include "components/zucchini/buffer_source.h"
 #include "components/zucchini/buffer_view.h"
@@ -41,7 +39,6 @@ bool ParseVarUInt(BufferSource* source, T* value) {
   auto bytes_read = DecodeVarUInt(source->begin(), source->end(), value);
   if (!bytes_read) {
     LOG(ERROR) << "Impossible to read VarUInt from source.";
-    LOG(ERROR) << base::debug::StackTrace().ToString();
     return false;
   }
   // Advance |source| beyond the VarUInt value.
@@ -55,7 +52,6 @@ bool ParseVarInt(BufferSource* source, T* value) {
   auto bytes_read = DecodeVarInt(source->begin(), source->end(), value);
   if (!bytes_read) {
     LOG(ERROR) << "Impossible to read VarInt from source.";
-    LOG(ERROR) << base::debug::StackTrace().ToString();
     return false;
   }
   // Advance |source| beyond the VarInt value.

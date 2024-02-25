@@ -17,12 +17,7 @@
 #ifndef __ZUCCHINI_AOSP_ABSL_OPTIONAL_H
 #define __ZUCCHINI_AOSP_ABSL_OPTIONAL_H
 
-#include <optional>
-
-namespace absl {
-    template <typename T> using optional = std::optional<T>;
-    inline constexpr auto nullopt = std::nullopt;
-}
+#include <absl/types/optional.h>
 
 #endif
 
